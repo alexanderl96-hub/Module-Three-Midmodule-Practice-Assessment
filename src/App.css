@@ -1,0 +1,33 @@
+.object{
+    border: 1px solid black;
+    display: flex;
+    width: 600px;
+    
+}
+
+
+.display{
+    border: 1px solid black;
+    height: 300px;
+    width: 300px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+    
+}
+img{
+    margin-top: 1px;
+    height: 100px;
+}
+h2{
+    margin-top: 1px;
+    font-size: 20px;
+}
+p{
+    margin-top: 2px;
+}
+button{
+    margin-top: -10px;
+}
