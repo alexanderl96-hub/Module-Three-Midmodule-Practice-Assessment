@@ -3,6 +3,7 @@ import studentData from "./data/studentData.js"
 import StudentsList from './Components/StudentsList.js'
 import Rost from './Components/Rost.js'
 import './App.css'
+import Form from "./Components/Forms.js"
 
 
 class App extends React.Component {
@@ -10,28 +11,31 @@ class App extends React.Component {
     super()
     this.state = {
       students: studentData,
-      enrolled: ''
+      enrolled: []
     }
+    
   }
  
-  handleData =()=>{
+  handleData =(stood)=>{
+    let enrolled = this.state.enrolled
     this.setState({
-      enrolled: studentData
+      enrolled: enrolled.concat(stood)
     })
   }
   
 
   render() {
-    console.log(this.state.students)
-    console.log(this.state.enrolled)
+    const { enrolled } = this.state
+    let average = enrolled.reduce((a, b)=> a + b.GPA, 0) / enrolled.length
     return (
       <div className="App">
-        
         <div className='object'>
-          <StudentsList handleData= {studentData}/> 
+          <h1>Build a Class</h1>
+          <StudentsList handdle= {this.state.students} enrolR={this.handleData}/> 
         </div>
         <div>
-         <Rost  enrolled={this.state.enrolled}/>
+         <Rost  enrolled={this.state.enrolled} average={average || 0}/>
+         <Form  enrolledAmount={this.state.enrolled.length} average={average || 0}/>
         </div>
         
         
